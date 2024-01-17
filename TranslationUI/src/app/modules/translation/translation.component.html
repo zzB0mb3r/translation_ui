@@ -1,0 +1,34 @@
+<form [formGroup]="translationForm">
+  <div class="flex-row">
+    <div class="translate-container flex-column">
+      <mat-form-field>
+        <mat-label>Original Language</mat-label>
+        <mat-select formControlName="originalLanguage">
+          <mat-option *ngFor="let language of languages | keyvalue" [value]="language.value">
+            {{language.key}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea rows="5" matInput formControlName="originalText" placeholder="Input text to translate"></textarea>
+        <mat-error *ngIf="translationForm.get('originalText').hasError('required')">
+          Text is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="translate-container flex-column">
+      <mat-form-field>
+        <mat-label>Target Language</mat-label>
+        <mat-select formControlName="targetLanguage">
+          <mat-option *ngFor="let language of languages | keyvalue" [value]="language.value">
+            {{language.key}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea rows="5" matInput readonly disabled placeholder="Translated text">{{ translatedText }}</textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <button class="submit" mat-stroked-button color="primary" (click)="onSubmit()">TRANSLATE</button>
+</form>
