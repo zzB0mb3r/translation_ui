@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  translateServiceUri: 'https://localhost:7164'
+  translateServiceUri: 'https://localhost:44389'
 };
 
 /*
